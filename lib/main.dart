@@ -42,7 +42,10 @@ class DanRandomsState extends State<DanRandoms> {
 
   Widget _buildRow(WordPair pair) {
     return ListTile(
-      title: Text("HI"),
+      title: Text(
+        pair.asPascalCase,
+        style: TextStyle(fontSize: 18),
+      ),
     );
   }
 
