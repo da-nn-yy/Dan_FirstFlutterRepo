@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/widgets.dart';
 
 class DanRandoms extends StatefulWidget {
   const DanRandoms({super.key});
@@ -49,9 +50,43 @@ class DanRandomsState extends State<DanRandoms> {
     );
   }
 
+  void _pushSaved() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
+      final Iterable<ListTile> tiles = _danWords.map((WordPair pair) {
+        return ListTile(
+          title: Text(
+            pair.asPascalCase,
+            style: TextStyle(fontSize: 16.0),
+          ),
+        );
+      });
+
+      final List<Widget> divided =
+          ListTile.divideTiles(context: context, tiles: tiles).toList();
+
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Save Dan words"),
+        ),
+        body: ListView(
+          children: divided,
+        ),
+      );
+    }));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dan word')),
+      appBar: AppBar(
+        title: Text('Dan word'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: _pushSaved,
+          )
+        ],
+      ),
       body: _buildList(),
     );
   }
