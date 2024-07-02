@@ -67,7 +67,8 @@ class DanRandomsState extends State<DanRandoms> {
 
       return Scaffold(
         appBar: AppBar(
-          title: Text("Save Dan words"),
+          title: Text("Saved Dan words",
+              style: TextStyle(fontWeight: FontWeight.bold)),
         ),
         body: ListView(
           children: divided,
@@ -79,7 +80,10 @@ class DanRandomsState extends State<DanRandoms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dan word'),
+        title: Text(
+          'Dan Random words',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.list),
