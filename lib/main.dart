@@ -26,8 +26,18 @@ class DanRandoms extends StatefulWidget {
 class DanRandomsState extends State<DanRandoms> {
   final _danWords = <WordPair>[];
   Widget _buildList() {
-    return ListView(
-        padding: const EdgeInsets.all(20.0), itemBuilder: (context, item) {});
+    return ListView.builder(
+        padding: const EdgeInsets.all(20.0),
+        itemBuilder: (context, item) {
+          if (item.isOdd) return Divider();
+
+          final index = item ~/ 2;
+
+          if (index >= _danWords.length) {
+            _danWords.addAll(generateWordPairs().take(10));
+          }
+          return _buildRow();
+        });
   }
 
   Widget build(BuildContext context) {
