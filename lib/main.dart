@@ -36,8 +36,14 @@ class DanRandomsState extends State<DanRandoms> {
           if (index >= _danWords.length) {
             _danWords.addAll(generateWordPairs().take(10));
           }
-          return _buildRow();
+          return _buildRow(_danWords[index]);
         });
+  }
+
+  Widget _buildRow(WordPair pair) {
+    return ListTile(
+      title: Text("HI"),
+    );
   }
 
   Widget build(BuildContext context) {
